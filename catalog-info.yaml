@@ -1,0 +1,49 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bjorneweb-bjorneweb-poi-map-app-dev
+  annotations:
+    argocd/app-name: bjorneweb-bjorneweb-poi-map-app-dev
+    backstage.io/kubernetes-id: bjorneweb-bjorneweb-poi-map-app-dev
+    backstage.io/kubernetes-namespace: bjorneweb
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=bjorneweb-bjorneweb-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23Janus1/bjorneweb-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23rock.n26o.p1.openshiftapps.com/dev-pipelines/ns/bjorneweb/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23rock.n26o.p1.openshiftapps.com/k8s/ns/bjorneweb/deployments/bjorneweb-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23rock.n26o.p1.openshiftapps.com/#https://github.com/Summit23Janus1/bjorneweb-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://bjorneweb-poi-map-app-bjorneweb.apps.summit23rock.n26o.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/bjornewebn"
+  system: workshop-system-bjorneweb
+  consumesApis:
+    - gateway-api-bjorneweb
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-bjorneweb
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/bjornewebn"
